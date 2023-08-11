@@ -2,6 +2,10 @@ package bank;
 
 import java.sql.*;
 
+// TODO: Break up the class into separate entities of responsibility.
+// TODO: One entity should handle communication with the database and be responsible for creating the initial database.
+// TODO: Another separate class could handle the interaction with the frontend app (user). This could be a good first step towards restructuring. Open to ideas.
+
 public class Bank
 {
     //Speichern der bankkunden ID
@@ -30,7 +34,6 @@ public class Bank
     //Login für die Datenbank
     static final String USER = "root";
     static final String PASS = "";
-
 
     //Konstruktor der Bank
     public Bank()
@@ -169,9 +172,6 @@ public class Bank
                     + "(\"Nico\", \"Müller\", 44528695, 4234)";
             stmt.executeUpdate(sql);
 
-
-
-
             //Erstelle die Tabelle bankkkonten
             stmt = conn.createStatement();
             sql = "CREATE TABLE bankkonten (\n" +
@@ -246,7 +246,6 @@ public class Bank
         }
 
     }
-
 
     //Prüfe die Kundekarte auf Basis des Vornamen und Nachnamen
     public boolean prüfeKundenkarte(String vorname, String nachname, int kartennummer)
@@ -372,7 +371,6 @@ public class Bank
         return prüfePin;
 
     }
-
 
     //Aktualisiere den Pin bei Änderunng
     public boolean aktualisierePin(int bankkundenID, int pin)
